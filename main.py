@@ -34,8 +34,9 @@ uri = os.environ.get("DATABASE_URL")
 if uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://",1)
     os.environ["DATABASE_URL"] = uri
-
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL",  "sqlite:///blog.db")
+# "sqlite:///blog.db"
+sqlite_url = os.environ.get("SQLITE_LINK")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL",  sqlite_url)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -220,4 +221,4 @@ def delete_post(post_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
