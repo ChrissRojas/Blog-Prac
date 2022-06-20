@@ -19,6 +19,7 @@ ckeditor.init_app(app)
 Bootstrap(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
+load_dotenv()
 gravatar = Gravatar(app,
                     size=100,
                     rating='g',
@@ -144,7 +145,6 @@ def show_post(post_id):
         if not current_user.is_authenticated:
             flash("you need to be registered or logged in")
             redirect(url_for('login'))
-
         new_comment = Comment(text=form.comment.data,
                               comment_author=current_user,
                               parent_post=requested_post)
