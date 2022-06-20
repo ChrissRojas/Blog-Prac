@@ -19,7 +19,7 @@ ckeditor.init_app(app)
 Bootstrap(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
-load_dotenv()
+# load_dotenv()
 gravatar = Gravatar(app,
                     size=100,
                     rating='g',
